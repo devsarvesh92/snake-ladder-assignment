@@ -1,4 +1,5 @@
 ﻿using System;
+using SnakeAndLadderGameEngine;
 
 namespace SnakeLadderAssignment
 {
@@ -6,7 +7,8 @@ namespace SnakeLadderAssignment
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GameCLI gameCLI = new GameCLI();
+            gameCLI.Run();
         }
     }
 }
