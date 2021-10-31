@@ -17,13 +17,18 @@ namespace SnakeAndLadderGameEngine
 
             //Build Player
             var playerName = Console.ReadLine();
-            var player = new Player(playerName,1);
+            var player = new Player(playerName, 1);
 
             Console.WriteLine($"Welome to SnakeAndLadder {player.Name}");
             Console.WriteLine();
 
+            Console.WriteLine("Press Any key to select dice");
+            Console.ReadLine();
+            Console.WriteLine("Dice is Selected");
+            Console.WriteLine();
+
             //Build Game
-            Game game = new Game(player);
+            Game game = new Game(player, new Dice());
 
             //Render View
             GameView gameView = new GameView();

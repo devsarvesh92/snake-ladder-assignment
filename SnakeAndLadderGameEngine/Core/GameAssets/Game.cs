@@ -4,14 +4,16 @@ namespace SnakeLadder.Core.GameAssets
 {
     public class Game
     {
+        public Dice Dice { get; set; }
 
         public Player Player { get; set; }
 
         public GameBoard GameBoard { get; set; }
 
-        public Game(Player player)
+        public Game(Player player, Dice dice)
         {
             this.Player = player;
+            this.Dice = dice;
             GameBoard = BuildGameBoard();
         }
 
@@ -21,7 +23,6 @@ namespace SnakeLadder.Core.GameAssets
             Width = 10,
             Height = 10,
         };
-
     }
 
 }
