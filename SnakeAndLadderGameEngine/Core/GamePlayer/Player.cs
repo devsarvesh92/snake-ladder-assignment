@@ -14,6 +14,9 @@ namespace SnakeLadder.Core.GamePlayer
             this.Name = name;
             this.Position = position;
         }
+
+        public int Play(Dice dice) => dice.Roll();
+
     }
 
 }
