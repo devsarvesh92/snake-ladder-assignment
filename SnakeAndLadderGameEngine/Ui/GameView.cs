@@ -6,10 +6,11 @@ namespace SnakeLadder.UI
 {
     public class GameView
     {
-        public void Render(GameBoard gameBoard)
+        public void RenderGameBoard(GameBoard gameBoard)
         {
             Console.WriteLine("Loading GameBoard...");
-            
+            Console.WriteLine("");
+
             //Render Game Board
             int seedRowStartIndex = 1;
             for (int i = 0; i < gameBoard.Height; i++)
@@ -22,8 +23,9 @@ namespace SnakeLadder.UI
                 seedRowStartIndex += gameBoard.Width;
             }
 
+            Console.WriteLine("");
             Console.WriteLine("Loading Complete...");
-            
+            Console.WriteLine("");
         }
 
     }

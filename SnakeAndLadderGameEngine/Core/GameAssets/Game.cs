@@ -1,16 +1,21 @@
+using SnakeLadder.Core.GamePlayer;
 
 namespace SnakeLadder.Core.GameAssets
 {
     public class Game
     {
-        public Game()
-        {
-            GameBoard = BuildGameBoard();
-        }
+
+        public Player Player { get; set; }
 
         public GameBoard GameBoard { get; set; }
 
-        private GameBoard BuildGameBoard () => new GameBoard()
+        public Game(Player player)
+        {
+            this.Player = player;
+            GameBoard = BuildGameBoard();
+        }
+
+        private GameBoard BuildGameBoard() => new GameBoard()
         {
             Destination = 100,
             Width = 10,
