@@ -1,20 +1,39 @@
 # Dserve Assignment : Snake and Ladder
 
-## Run the programme
+## Running Programme and Test
 
-cd to .\SnakeLadderAssignment
+----
+
+### Run the programme
+
+----
+
+```shell
 Run dotnet build
 Run dotnet run
+```
 
-## Run the Tests
+### Run the tests
+
+----
 
 ### Execute all tests
 
-cd to SnakeLadderGameEngine.Tests
+----
+
+Go to [Test Project] (SnakeLadderAssignment/SnakeLadderGameEngine.Tests)
+
+``` shell
 Run dotnet test
+```
 
 ### Execute specific test
 
-dotnet test --filter DisplayName=XUnitNamespace.TestClass1.Test1
+----
 
-e.g dotnet test --filter DisplayName=dotnet test --filter DisplayName=SnakeLadderGameEngine.Tests.DiceTests.Roll_ValueShouldbeInBetween1And6
+``` shell
+dotnet test --filter DisplayName= XUnitNamespace.TestClass1.Test1
+
+e.g Execute Roll Dice Unit Test
+dotnet test --filter DisplayName = SnakeLadderGameEngine.Tests.DiceTests.Roll_ValueShouldbeInBetween1And6
+```
