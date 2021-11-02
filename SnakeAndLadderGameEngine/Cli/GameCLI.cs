@@ -24,7 +24,7 @@ namespace SnakeAndLadderGameEngine
             Console.WriteLine("Press Any key to select dice");
             Console.ReadLine();
 
-            var game = new Game(player, new Dice());
+            var game = new Game(player, new Die());
 
             var gameView = new GameView();
             gameView.RenderGameBoard(game.GameBoard);

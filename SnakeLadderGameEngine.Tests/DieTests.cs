@@ -4,13 +4,13 @@ using Xunit;
 
 namespace SnakeLadderGameEngine.Tests
 {
-    public class DiceTests
+    public class DieTests
     {
         [Fact]
         public void Roll_ValueShouldbeInBetween1And6()
         {
             //Act
-            Dice dice = new Dice();
+            var dice = new Die();
             var actual = dice.Roll();
 
             //Assert

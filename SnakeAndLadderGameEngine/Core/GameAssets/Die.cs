@@ -2,7 +2,7 @@ using System;
 
 namespace SnakeLadder.Core.GameAssets
 {
-    public class Dice
+    public class Die
     {
         private readonly Random random = new Random();
         

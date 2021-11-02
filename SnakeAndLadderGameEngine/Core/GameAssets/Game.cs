@@ -4,22 +4,22 @@ namespace SnakeLadder.Core.GameAssets
 {
     public class Game
     {
-        public Dice Dice { get; set; }
+        public Die Die { get; set; }
 
         public Player Player { get; set; }
 
         public GameBoard GameBoard { get; set; }
 
-        public Game(Player player, Dice dice)
+        public Game(Player player, Die die)
         {
             this.Player = player;
-            this.Dice = dice;
+            this.Die = die;
             GameBoard = BuildGameBoard();
         }
 
         public void Run()
         {
-            var diceValue = this.Player.Play(this.Dice);
+            var diceValue = this.Player.Play(this.Die);
 
             this.Player.Position = this.Player.Position + diceValue <= this.GameBoard.Destination ?
                                    this.Player.Position += diceValue :

@@ -15,15 +15,15 @@ namespace SnakeLadder.Core.GamePlayer
             this.Position = position;
         }
 
-        public int Play(Dice dice)
+        public int Play(Die die)
         {
-            if (dice != null)
+            if (die != null)
             {
-                return dice.Roll();
+                return die.Roll();
             }
             else
             {
-                throw new ArgumentNullException("dice", "Please select a dice in order for continue playing");
+                throw new ArgumentNullException("die", "Please select a dice in order for continue playing");
             }
         }
     }
