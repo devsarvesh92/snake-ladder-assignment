@@ -7,7 +7,7 @@ namespace SnakeLadderAssignment
     {
         static void Main(string[] args)
         {
-            GameCLI gameCLI = new GameCLI();
+            var gameCLI = new GameClI();
             gameCLI.Run();
         }
     }

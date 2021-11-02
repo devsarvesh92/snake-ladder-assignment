@@ -5,7 +5,7 @@ using SnakeLadder.UI;
 
 namespace SnakeAndLadderGameEngine
 {
-    public class GameCLI
+    public class GameClI
     {
         public void Run()
         {
@@ -24,9 +24,9 @@ namespace SnakeAndLadderGameEngine
             Console.WriteLine("Press Any key to select dice");
             Console.ReadLine();
 
-            Game game = new Game(player, new Dice());
+            var game = new Game(player, new Dice());
 
-            GameView gameView = new GameView();
+            var gameView = new GameView();
             gameView.RenderGameBoard(game.GameBoard);
 
             while (game.Player.Position < game.GameBoard.Destination)
