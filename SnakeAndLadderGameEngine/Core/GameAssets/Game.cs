@@ -8,13 +8,13 @@ namespace SnakeLadder.Core.GameAssets
 
         public Player Player { get; set; }
 
-        public GameBoard GameBoard { get; set; }
+        public GameBoard GameBoard { get; }
 
         public Game(Player player, Die die)
         {
             this.Player = player;
             this.Die = die;
-            GameBoard = BuildGameBoard();
+            GameBoard = new GameBoard(10, 10);
         }
 
         public void Run()
@@ -25,13 +25,6 @@ namespace SnakeLadder.Core.GameAssets
                                    this.Player.Position += diceValue :
                                    this.Player.Position;
         }
-
-        private GameBoard BuildGameBoard() => new GameBoard()
-        {
-            Destination = 100,
-            Width = 10,
-            Height = 10,
-        };
     }
 
 }
