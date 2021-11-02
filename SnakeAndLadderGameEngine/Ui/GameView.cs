@@ -8,7 +8,7 @@ namespace SnakeLadder.UI
     {
         public void RenderGameBoard(GameBoard gameBoard)
         {
-            Console.WriteLine("Loading GameBoard...");
+            Console.WriteLine("Loading gameBoard");
             Console.WriteLine("");
 
             //Render Game Board
@@ -24,7 +24,7 @@ namespace SnakeLadder.UI
             }
 
             Console.WriteLine("");
-            Console.WriteLine("Loading Complete...");
+            Console.WriteLine("Loading complete");
             Console.WriteLine("");
         }
 

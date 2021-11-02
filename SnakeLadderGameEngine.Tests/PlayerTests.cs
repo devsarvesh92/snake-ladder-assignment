@@ -14,10 +14,12 @@ namespace SnakeLadderGameEngine.Tests
         public void Play_ValueShouldbeBetween1And6(Dice dice, string name, int initialPosition)
         {
             //Act
+
             Player player = new Player(name, initialPosition);
             var valueOnDice = player.Play(dice);
 
             //Assert
+
             Assert.InRange(valueOnDice, 1, 6);
         }
 
@@ -27,9 +29,11 @@ namespace SnakeLadderGameEngine.Tests
         public void Play_NullDiceArgumentShouldThrowArgumentNullException(Dice dice, string name, int initialPosition, string message)
         {
             //Act
+
             Player player = new Player(name, initialPosition);
 
             //Assert
+
             var exception = Assert.Throws<ArgumentNullException>("dice", () => player.Play(dice));
             Assert.Equal(exception.Message, message);
         }

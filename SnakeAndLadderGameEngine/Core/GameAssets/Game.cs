@@ -21,14 +21,9 @@ namespace SnakeLadder.Core.GameAssets
         {
             var diceValue = this.Player.Play(this.Dice);
 
-            System.Console.WriteLine($"Dice Result : {diceValue}");
-
             this.Player.Position = this.Player.Position + diceValue <= this.GameBoard.Destination ?
                                    this.Player.Position += diceValue :
                                    this.Player.Position;
-            
-            System.Console.WriteLine($"{this.Player.Name} is at {this.Player.Position}");
-            System.Console.WriteLine();
         }
 
         private GameBoard BuildGameBoard() => new GameBoard()
