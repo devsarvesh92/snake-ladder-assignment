@@ -6,7 +6,7 @@ namespace SnakeLadder.Core.GameAssets
     public record GameBoard(int Width, int Height)
     {
         public int Destination = Width * Height;
-        
+
         public readonly List<Snake> Snakes = GetSnakes();
 
         public Snake GetSnake(int location) => Snakes.FirstOrDefault(snake => snake.tailEnd == location);
@@ -15,7 +15,7 @@ namespace SnakeLadder.Core.GameAssets
         {
             return new List<Snake>()
             {
-                new Snake(14,7)
+                new Snake(14,7,System.ConsoleColor.Blue)
             };
         }
     }
