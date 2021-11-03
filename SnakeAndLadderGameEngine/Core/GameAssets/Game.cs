@@ -1,3 +1,4 @@
+using System.Linq;
 using SnakeLadder.Core.GamePlayer;
 using SnakeLadder.Core.GameState;
 
@@ -27,6 +28,12 @@ namespace SnakeLadder.Core.GameAssets
             {
                 var dieValue = this.Player.Play(this.Die);
                 MovePlayer(dieValue);
+
+                var snakePresentAtlocation = this.GameBoard.Snakes.FirstOrDefault(snake => snake.headStart == this.Player.Position);
+                if (snakePresentAtlocation != null)
+                {
+                    snakePresentAtlocation.Bite(this.Player);
+                }
 
                 this.GameState.NumberofTurnsLeft--;
                 this.GameState.PlayerPosition = this.Player.Position;
