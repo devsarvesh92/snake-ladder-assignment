@@ -25,11 +25,11 @@ namespace SnakeLadder.Core.GameAssets
         {
             return new List<Ladder>()
             {
-                new Ladder(2,14,System.ConsoleColor.Blue),
-                new Ladder(8,24,System.ConsoleColor.Blue),
-                new Ladder(9,81,System.ConsoleColor.Blue),
-                new Ladder(29,65,System.ConsoleColor.Blue),
-                new Ladder(69,96,System.ConsoleColor.Blue)
+                new Ladder(2,23,System.ConsoleColor.DarkYellow),
+                new Ladder(8,24,System.ConsoleColor.Red),
+                new Ladder(9,81,System.ConsoleColor.Green),
+                new Ladder(29,65,System.ConsoleColor.Yellow),
+                new Ladder(69,96,System.ConsoleColor.DarkMagenta)
             };
         }
     }

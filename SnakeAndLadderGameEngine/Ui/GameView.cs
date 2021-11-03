@@ -13,6 +13,7 @@ namespace SnakeLadder.UI
             Console.WriteLine("");
 
             var snakes = gameBoard.Snakes;
+            var ladders = gameBoard.Ladders;
             //Render Game Board
             int seedRowStartIndex = 1;
             for (int i = 0; i < gameBoard.Height; i++)
@@ -21,10 +22,18 @@ namespace SnakeLadder.UI
                 {
 
                     var snakePresentAtlocation = snakes.FirstOrDefault(snake => snake.headStart == j || snake.tailEnd == j);
+                    var ladderPresentAtlocation = ladders.FirstOrDefault(ladder => ladder.start == j || ladder.end == j);
+
                     if (snakePresentAtlocation != null)
                     {
                         Console.ForegroundColor = snakePresentAtlocation.snakeColor;
-                        System.Console.Write($"|{j} S {(snakePresentAtlocation.headStart,snakePresentAtlocation.tailEnd)}|");
+                        System.Console.Write($"|{j} S {(snakePresentAtlocation.headStart, snakePresentAtlocation.tailEnd)}|");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if (ladderPresentAtlocation != null)
+                    {
+                        Console.ForegroundColor = ladderPresentAtlocation.ladderColor;
+                        System.Console.Write($"|{j} L {(ladderPresentAtlocation.start, ladderPresentAtlocation.end)}|");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
