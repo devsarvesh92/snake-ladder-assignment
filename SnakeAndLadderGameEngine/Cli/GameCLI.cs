@@ -16,27 +16,30 @@ namespace SnakeAndLadderGameEngine
 
             //Build Player
             var playerName = Console.ReadLine();
-            var player = new Player(playerName, 1);
+            var player = new Player(playerName);
 
             Console.WriteLine($"Welome to SnakeAndLadder {player.Name}");
             Console.WriteLine();
-
-            Console.WriteLine("Press Any key to select dice");
-            Console.ReadLine();
 
             var game = new Game(player, new Die());
 
             var gameView = new GameView();
             gameView.RenderGameBoard(game.GameBoard);
 
-            while (game.Player.Position < game.GameBoard.Destination)
+            while (!game.IsGameOver())
             {
                 Console.WriteLine("Press any key to role a dice");
                 Console.ReadLine();
 
                 game.Run();
+                System.Console.WriteLine($"Die value {game.GameState.DieValue}");
+                System.Console.WriteLine($"{game.Player.Name} is now at {game.GameState.PlayerPosition} and number of turns left {game.GameState.NumberofTurnsLeft}");
             }
 
+
+            Console.ReadLine();
+            System.Console.WriteLine("Game over");
+            Console.ReadLine();
             Console.WriteLine("Work in progress stay tuned");
             Console.WriteLine("Press any key to exit");
 
@@ -44,5 +47,4 @@ namespace SnakeAndLadderGameEngine
             Console.ReadLine();
         }
     }
-
 }

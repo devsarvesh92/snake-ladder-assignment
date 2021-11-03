@@ -11,47 +11,24 @@ namespace SnakeLadderGameEngine.Tests
         [Theory]
         [MemberData(nameof(PlayerPlayTestDataForValueShouldbeBetween1And6))]
 
-        public void Play_ValueShouldbeBetween1And6(Die die, string name, int initialPosition)
+        public void Play_ValueShouldbeBetween1And6(Die die, string name)
         {
             //Act
 
-            Player player = new Player(name, initialPosition);
+            Player player = new Player(name);
             var valueOnDice = player.Play(die);
 
             //Assert
 
             Assert.InRange(valueOnDice, 1, 6);
         }
-
-        [Theory]
-        [MemberData(nameof(PlayerPlayTestDataForArgumentNullException))]
-
-        public void Play_NullDiceArgumentShouldThrowArgumentNullException(Die die, string name, int initialPosition, string message)
-        {
-            //Act
-
-            Player player = new Player(name, initialPosition);
-
-            //Assert
-
-            var exception = Assert.Throws<ArgumentNullException>("die", () => player.Play(die));
-            Assert.Equal(exception.Message, message);
-        }
-
+        
         #region PlayerTest TestData
         public static IEnumerable<object[]> PlayerPlayTestDataForValueShouldbeBetween1And6 =>
         new List<object[]>
         {
-            new object[] { new Die(),"Sarvesh",1 },
-        };
-
-        public static IEnumerable<object[]> PlayerPlayTestDataForArgumentNullException =>
-        new List<object[]>
-        {
-            new object[] { null,"Sarvesh",1 ,"Please select a dice in order for continue playing (Parameter 'die')"},
+            new object[] { new Die(),"Sarvesh" },
         };
         #endregion
     }
-
-
 }

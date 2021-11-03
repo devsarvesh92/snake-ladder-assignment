@@ -1,30 +1,49 @@
 using SnakeLadder.Core.GamePlayer;
+using SnakeLadder.Core.GameState;
 
 namespace SnakeLadder.Core.GameAssets
 {
     public class Game
     {
-        public Die Die { get; set; }
+        public CurrentGameState GameState { get; private set; }
 
-        public Player Player { get; set; }
+        public Die Die { get; }
 
         public GameBoard GameBoard { get; }
+
+        public Player Player { get; private set; }
 
         public Game(Player player, Die die)
         {
             this.Player = player;
             this.Die = die;
             GameBoard = new GameBoard(10, 10);
+            GameState = new CurrentGameState();
         }
 
-        public void Run()
+        public CurrentGameState Run()
         {
-            var diceValue = this.Player.Play(this.Die);
+            if (this.GameState.NumberofTurnsLeft > 0)
+            {
+                var dieValue = this.Player.Play(this.Die);
+                MovePlayer(dieValue);
 
-            this.Player.Position = this.Player.Position + diceValue <= this.GameBoard.Destination ?
-                                   this.Player.Position += diceValue :
+                this.GameState.NumberofTurnsLeft--;
+                this.GameState.PlayerPosition = this.Player.Position;
+                this.GameState.DieValue = dieValue;
+            }
+
+            return this.GameState;
+        }
+
+        public bool IsGameOver() => this.GameState.PlayerPosition == this.GameBoard.Destination || this.GameState.NumberofTurnsLeft == 0;
+
+        private void MovePlayer(int dieValue)
+        {
+            var position = this.Player.Position + dieValue <= this.GameBoard.Destination ?
+                                   this.Player.Position + dieValue :
                                    this.Player.Position;
+            this.Player.Move(position);
         }
     }
-
 }

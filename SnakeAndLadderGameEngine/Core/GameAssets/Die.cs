@@ -8,5 +8,4 @@ namespace SnakeLadder.Core.GameAssets
         
         public int Roll() => random.Next(1, 7);
     }
-
 }
