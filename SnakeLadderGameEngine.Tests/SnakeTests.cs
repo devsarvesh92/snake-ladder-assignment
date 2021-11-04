@@ -20,12 +20,11 @@ namespace SnakeLadderGameEngine.Tests
 
             //Act
             game.Player.Move(14);
-            var snakePresentAtlocation = game.GameBoard.Snakes.FirstOrDefault(snake => snake.headStart == game.Player.Position);
-            snakePresentAtlocation.Bite(game.Player);
+            game.GameBoard.GetPlayerMovables(14)?.MovePlayer(game.Player);
             var expected = game.Player.Position;
 
             //Assert
-            Assert.Equal(expected,actual);
+            Assert.Equal(expected, actual);
         }
 
         #region Snake Test TestData

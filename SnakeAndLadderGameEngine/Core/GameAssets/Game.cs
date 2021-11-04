@@ -29,11 +29,8 @@ namespace SnakeLadder.Core.GameAssets
                 var dieValue = this.Player.Play(this.Die);
                 MovePlayer(dieValue);
 
-                var snakePresentAtlocation = this.GameBoard.Snakes.FirstOrDefault(snake => snake.headStart == this.Player.Position);
-                if (snakePresentAtlocation != null)
-                {
-                    snakePresentAtlocation.Bite(this.Player);
-                }
+                //Moves a player as per movble present at the location
+                this.GameBoard.GetPlayerMovables(Player.Position)?.MovePlayer(this.Player);
 
                 this.GameState.NumberofTurnsLeft--;
                 this.GameState.PlayerPosition = this.Player.Position;

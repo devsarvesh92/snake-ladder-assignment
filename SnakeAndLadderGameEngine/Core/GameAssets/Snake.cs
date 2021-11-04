@@ -3,11 +3,11 @@ using SnakeLadder.Core.GamePlayer;
 
 namespace SnakeLadder.Core.GameAssets
 {
-    public record Snake(int headStart, int tailEnd, ConsoleColor snakeColor)
+    public record Snake(int headStart, int tailEnd, ConsoleColor snakeColor) : IMovable
     {
         /// <summary>
-        /// Bite moves player to the tailEnd
+        /// MovePlayer simulates bite movement to the tailEnd
         /// </summary>
-        public void Bite(Player player) => player.Move(this.tailEnd);
-    };
+        public void MovePlayer(Player player) => player.Move(this.tailEnd);
+    }
 }

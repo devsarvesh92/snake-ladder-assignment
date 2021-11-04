@@ -22,7 +22,7 @@ namespace SnakeLadder.UI
                 {
 
                     var snakePresentAtlocation = snakes.FirstOrDefault(snake => snake.headStart == j || snake.tailEnd == j);
-                    var ladderPresentAtlocation = ladders.FirstOrDefault(ladder => ladder.start == j || ladder.end == j);
+                    var ladderPresentAtlocation = ladders.FirstOrDefault(ladder => ladder.topPosition == j || ladder.bottomPosition == j);
 
                     if (snakePresentAtlocation != null)
                     {
@@ -33,7 +33,7 @@ namespace SnakeLadder.UI
                     else if (ladderPresentAtlocation != null)
                     {
                         Console.ForegroundColor = ladderPresentAtlocation.ladderColor;
-                        System.Console.Write($"|{j} L {(ladderPresentAtlocation.start, ladderPresentAtlocation.end)}|");
+                        System.Console.Write($"|{j} L {(ladderPresentAtlocation.topPosition, ladderPresentAtlocation.bottomPosition)}|");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else

@@ -11,7 +11,25 @@ namespace SnakeLadder.Core.GameAssets
 
         public readonly List<Ladder> Ladders = GetLadders();
 
-        public Snake GetSnake(int location) => Snakes.FirstOrDefault(snake => snake.tailEnd == location);
+        /// <summary>
+        /// Playermovables present at player location
+        /// Playermovables = Either snake or ladder because they moves player from Source to destination
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns>Playermovables</returns>
+        public IMovable GetPlayerMovables(int location)
+        {
+            IMovable playerMovable;
+
+            playerMovable = this.Snakes.FirstOrDefault(snake => snake.headStart == location);
+
+            if (playerMovable == null)
+            {
+                playerMovable = this.Ladders.FirstOrDefault(ladder => ladder.bottomPosition == location);
+            }
+
+            return playerMovable;
+        }
 
         private static List<Snake> GetSnakes()
         {
