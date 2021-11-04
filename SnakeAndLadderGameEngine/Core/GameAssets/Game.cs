@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using SnakeLadder.Core.GamePlayer;
 using SnakeLadder.Core.GameState;
+using SnakeLadder.Core.GameResult;
+
 
 namespace SnakeLadder.Core.GameAssets
 {
@@ -46,6 +48,20 @@ namespace SnakeLadder.Core.GameAssets
         }
 
         public bool IsGameOver() => this.GameState.PlayerPosition == this.GameBoard.Destination || this.GameState.NumberofTurnsLeft == 0;
+
+        public Result GetResult()
+        {
+            Result result;
+            if (this.IsGameOver())
+            {
+                result = this.GameState.PlayerPosition == this.GameBoard.Destination ? Result.Win : Result.Lost;
+            }
+            else
+            {
+                result = Result.Inprogress;
+            }
+            return result;
+        }
 
         private void MovePlayer(int dieValue)
         {

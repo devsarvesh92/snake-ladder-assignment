@@ -23,7 +23,7 @@ namespace SnakeAndLadderGameEngine
             Console.WriteLine();
 
             var game = new Game(player);
-            
+
             var gameView = new GameView();
             gameView.RenderGameBoard(game.GameBoard);
 
@@ -35,14 +35,16 @@ namespace SnakeAndLadderGameEngine
                 game.Run();
                 System.Console.WriteLine($"Die value {game.GameState.DieValue}");
                 System.Console.WriteLine($"{game.Player.Name} is now at {game.GameState.PlayerPosition} and number of turns left {game.GameState.NumberofTurnsLeft}");
+                Console.ReadLine();
             }
 
-
+            Console.ForegroundColor = game.GetResult() == SnakeLadder.Core.GameResult.Result.Win ? ConsoleColor.Green : ConsoleColor.Yellow;
+            Console.WriteLine($"{game.Player.Name} has {game.GetResult().ToString()} the game");
             Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+
             System.Console.WriteLine("Game over");
             Console.ReadLine();
-            Console.WriteLine("Work in progress stay tuned");
-            Console.WriteLine("Press any key to exit");
 
             Console.WriteLine();
             Console.ReadLine();
