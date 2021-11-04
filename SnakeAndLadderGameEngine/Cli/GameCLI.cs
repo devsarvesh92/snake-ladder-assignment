@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using SnakeLadder.Core.GameAssets;
 using SnakeLadder.Core.GamePlayer;
 using SnakeLadder.UI;
@@ -21,8 +22,8 @@ namespace SnakeAndLadderGameEngine
             Console.WriteLine($"Welome to SnakeAndLadder {player.Name}");
             Console.WriteLine();
 
-            var game = new Game(player, new Die());
-
+            var game = new Game(player);
+            
             var gameView = new GameView();
             gameView.RenderGameBoard(game.GameBoard);
 

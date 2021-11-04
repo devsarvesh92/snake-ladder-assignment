@@ -2,10 +2,10 @@ using System;
 
 namespace SnakeLadder.Core.GameAssets
 {
-    public class Die
+    public class NormalDie : Die
     {
         private readonly Random random = new Random();
-        
-        public int Roll() => random.Next(1, 7);
+
+        public override int Roll() => random.Next(1, 7);
     }
 }

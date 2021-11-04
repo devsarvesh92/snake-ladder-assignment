@@ -11,7 +11,7 @@ namespace SnakeLadderGameEngine.Tests
         [Theory]
         [MemberData(nameof(PlayerPlayTestDataForValueShouldbeBetween1And6))]
 
-        public void Play_ValueShouldbeBetween1And6(Die die, string name)
+        public void Play_ValueShouldbeBetween1And6(string name, Die die)
         {
             //Act
 
@@ -22,12 +22,34 @@ namespace SnakeLadderGameEngine.Tests
 
             Assert.InRange(valueOnDice, 1, 6);
         }
-        
+
+        [Theory]
+        [MemberData(nameof(PlayerPlayTestDataForAnyEvenValueBetween2And6))]
+
+        public void Play_ValueShouldbeAnyEvenValueBetween2And6(string name, Die die)
+        {
+            //Act
+
+            Player player = new Player(name);
+            var valueOnDice = player.Play(die);
+
+            //Assert
+
+            Assert.Equal(0, valueOnDice % 2);
+        }
+
+
         #region PlayerTest TestData
         public static IEnumerable<object[]> PlayerPlayTestDataForValueShouldbeBetween1And6 =>
         new List<object[]>
         {
-            new object[] { new Die(),"Sarvesh" },
+            new object[] { "Sarvesh" , new NormalDie()},
+        };
+
+        public static IEnumerable<object[]> PlayerPlayTestDataForAnyEvenValueBetween2And6 =>
+        new List<object[]>
+        {
+            new object[] { "Sarvesh" , new CrookedDie()},
         };
         #endregion
     }

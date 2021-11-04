@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using SnakeLadder.Core.GamePlayer;
 using SnakeLadder.Core.GameState;
@@ -14,10 +16,13 @@ namespace SnakeLadder.Core.GameAssets
 
         public Player Player { get; private set; }
 
-        public Game(Player player, Die die)
+        private readonly Random random;
+
+        public Game(Player player)
         {
+            random = new Random();
             this.Player = player;
-            this.Die = die;
+            this.Die = GetRandomDie();
             GameBoard = new GameBoard(10, 10);
             GameState = new CurrentGameState();
         }
@@ -48,6 +53,19 @@ namespace SnakeLadder.Core.GameAssets
                                    this.Player.Position + dieValue :
                                    this.Player.Position;
             this.Player.Move(position);
+        }
+
+        /// <summary>
+        /// Selects either normal or crooked die
+        /// Normal die gives values between 1 and 6
+        /// Crooked die gives even values between 2 and 6
+        /// </summary>
+        /// <returns></returns>
+        private Die GetRandomDie()
+        {
+            //Choose random dice
+            var listOfAvailableDices = new List<Die>() { new NormalDie(), new CrookedDie() };
+            return listOfAvailableDices.ElementAt(this.random.Next(0, 2));
         }
     }
 }

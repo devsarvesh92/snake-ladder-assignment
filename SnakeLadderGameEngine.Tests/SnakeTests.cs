@@ -31,7 +31,7 @@ namespace SnakeLadderGameEngine.Tests
         public static IEnumerable<object[]> TestDataForPlayerShouldMoveFrom14to7OnSnakeBitr =>
         new List<object[]>
         {
-            new object[] { new Game(new Player("Sarvesh"),new Die()) },
+            new object[] { new Game(new Player("Sarvesh")) },
         };
         #endregion
     }

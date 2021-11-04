@@ -4,17 +4,17 @@ using Xunit;
 
 namespace SnakeLadderGameEngine.Tests
 {
-    public class DieTests
+    public class NormalDieTests
     {
         [Fact]
         public void Roll_ValueShouldbeInBetween1And6()
         {
             //Act
-            var dice = new Die();
+            var dice = new NormalDie();
             var actual = dice.Roll();
 
             //Assert
-            Assert.InRange(actual,1,6);
+            Assert.InRange(actual, 1, 6);
         }
     }
 }
