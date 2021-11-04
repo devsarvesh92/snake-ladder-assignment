@@ -7,10 +7,10 @@ namespace SnakeLadder.Core.GameState
             NumberofTurnsLeft = 10;
         }
 
-        internal int NumberofTurnsLeft { get; set; }
+        public int NumberofTurnsLeft { get; set; }
 
-        internal int PlayerPosition { get; set; }
+        public int PlayerPosition { get; set; }
 
-        internal int DieValue { get; set; }
+        public int DieValue { get; set; }
     }
 }
