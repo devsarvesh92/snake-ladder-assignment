@@ -7,28 +7,28 @@ using Xunit;
 
 namespace SnakeLadderGameEngine.Tests
 {
-    public class SnakeTests
+    public class LadderTests
     {
 
         [Theory]
-        [MemberData(nameof(TestDataForPlayerShouldMoveFrom14to7OnSnakeBitr))]
+        [MemberData(nameof(TestDataForPlayerShouldMoveFrom8to24OnLadderClimb))]
 
-        public void MovePlayer_PlayerShouldMoveFrom14to7(Game game)
+        public void MovePlayer_PlayerShouldMoveFrom8to24(Game game)
         {
             //Arrange
-            var actual = 7;
+            var actual = 24;
 
             //Act
-            game.Player.Move(14);
-            game.GameBoard.GetPlayerMovables(14)?.MovePlayer(game.Player);
+            game.Player.Move(8);
+            game.GameBoard.GetPlayerMovables(8)?.MovePlayer(game.Player);
             var expected = game.Player.Position;
 
             //Assert
             Assert.Equal(expected, actual);
         }
 
-        #region Snake Test TestData
-        public static IEnumerable<object[]> TestDataForPlayerShouldMoveFrom14to7OnSnakeBitr =>
+        #region Ladder Test TestData
+        public static IEnumerable<object[]> TestDataForPlayerShouldMoveFrom8to24OnLadderClimb =>
         new List<object[]>
         {
             new object[] { new Game(new Player("Sarvesh"),new Die()) },
