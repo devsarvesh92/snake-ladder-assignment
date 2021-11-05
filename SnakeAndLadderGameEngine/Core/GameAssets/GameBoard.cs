@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using SnakeLadder.Core.GameAssets.PlayerMovers;
+using SnakeLadder.Core.GameAssets.PlayerMovers.Interfaces;
 
 namespace SnakeLadder.Core.GameAssets
 {
@@ -17,9 +19,9 @@ namespace SnakeLadder.Core.GameAssets
         /// </summary>
         /// <param name="location"></param>
         /// <returns>Playermovables</returns>
-        public IMovable GetPlayerMovables(int location)
+        public IPlayerMover GetPlayerMovables(int location)
         {
-            IMovable playerMovable;
+            IPlayerMover playerMovable;
 
             playerMovable = this.Snakes.FirstOrDefault(snake => snake.headStart == location);
 

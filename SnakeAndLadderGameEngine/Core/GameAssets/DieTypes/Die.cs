@@ -1,6 +1,6 @@
 using System;
 
-namespace SnakeLadder.Core.GameAssets
+namespace SnakeLadder.Core.GameAssets.DieTypes
 {
     public abstract class Die
     {

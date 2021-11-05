@@ -1,8 +1,8 @@
-namespace SnakeLadder.Core.GameState
+namespace SnakeLadder.Core.GameStates
 {
-    public class CurrentGameState
+    public class GameState
     {
-        public CurrentGameState()
+        public GameState()
         {
             NumberofTurnsLeft = 10;
         }

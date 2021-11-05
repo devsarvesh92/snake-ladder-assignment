@@ -1,5 +1,6 @@
 using System;
 using SnakeLadder.Core.GameAssets;
+using SnakeLadder.Core.GameAssets.DieTypes;
 using Xunit;
 
 namespace SnakeLadderGameEngine.Tests

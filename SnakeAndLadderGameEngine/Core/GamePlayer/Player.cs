@@ -1,5 +1,6 @@
 using System;
 using SnakeLadder.Core.GameAssets;
+using SnakeLadder.Core.GameAssets.DieTypes;
 
 namespace SnakeLadder.Core.GamePlayer
 {
@@ -17,6 +18,6 @@ namespace SnakeLadder.Core.GamePlayer
 
         public int Play(Die die) => die.Roll();
 
-        public void Move(int destination) => this.Position = destination;
+        public void Move(int cellNumber) => this.Position = cellNumber;
     }
 }

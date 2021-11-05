@@ -1,6 +1,6 @@
 using System;
 
-namespace SnakeLadder.Core.GameAssets
+namespace SnakeLadder.Core.GameAssets.DieTypes
 {
     public class NormalDie : Die
     {
