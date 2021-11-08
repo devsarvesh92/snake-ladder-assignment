@@ -1,10 +1,6 @@
 # Dserve assignment: SnakeAndLadder
 
-----
-
 ## Running programme and test
-
-----
 
 ```shell
 # Run the programme.
