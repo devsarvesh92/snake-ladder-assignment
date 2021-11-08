@@ -23,7 +23,7 @@ namespace SnakeLadder.Core.GameAssets
         {
             random = new Random();
             this.Player = player;
-            this.Die = GetRandomDie();
+            this.Die = new List<Die>() { new FairDie(), new CrookedDie() }[random.Next(0, 2)];
             GameBoard = new GameBoard(10, 10);
             CurrentGameState = new GameState();
         }
@@ -50,16 +50,14 @@ namespace SnakeLadder.Core.GameAssets
 
         public Result GetResult()
         {
-            Result result;
             if (this.IsGameOver())
             {
-                result = this.CurrentGameState.PlayerPosition == this.GameBoard.Destination ? Result.Win : Result.Lose;
+                return this.CurrentGameState.PlayerPosition == this.GameBoard.Destination ? Result.Win : Result.Lose;
             }
             else
             {
-                result = Result.InProgress;
+                return Result.InProgress;
             }
-            return result;
         }
 
         private void MovePlayer(int dieValue)
@@ -68,19 +66,6 @@ namespace SnakeLadder.Core.GameAssets
                                    this.Player.Position + dieValue :
                                    this.Player.Position;
             this.Player.Move(position);
-        }
-
-        /// <summary>
-        /// Selects either normal or crooked die
-        /// Normal die gives values between 1 and 6
-        /// Crooked die gives even values between 2 and 6
-        /// </summary>
-        /// <returns></returns>
-        private Die GetRandomDie()
-        {
-            //Choose random dice
-            var listOfAvailableDices = new List<Die>() { new NormalDie(), new CrookedDie() };
-            return listOfAvailableDices.ElementAt(this.random.Next(0, 2));
         }
     }
 }

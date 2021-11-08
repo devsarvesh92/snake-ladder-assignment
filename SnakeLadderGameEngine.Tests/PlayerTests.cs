@@ -42,7 +42,7 @@ namespace SnakeLadderGameEngine.Tests
         public static IEnumerable<object[]> PlayerPlayTestDataForValueShouldbeBetween1And6 =>
         new List<object[]>
         {
-            new object[] { "Sarvesh" , new NormalDie()},
+            new object[] { "Sarvesh" , new FairDie()},
         };
 
         public static IEnumerable<object[]> PlayerPlayTestDataForAnyEvenValueBetween2And6 =>

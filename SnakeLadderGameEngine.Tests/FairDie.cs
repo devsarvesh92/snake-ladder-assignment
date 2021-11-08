@@ -10,7 +10,7 @@ namespace SnakeLadderGameEngine.Tests
         public void Roll_ValueShouldbeInBetween1And6()
         {
             //Act
-            var dice = new NormalDie();
+            var dice = new FairDie();
             var actual = dice.Roll();
 
             //Assert
