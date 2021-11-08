@@ -57,10 +57,10 @@ namespace SnakeAndLadderGameEngine
             var snakes = gameBoard.Snakes;
             var ladders = gameBoard.Ladders;
             //Render Game Board
-            int seedRowStartIndex = 1;
-            for (int i = 0; i < gameBoard.Height; i++)
+            var seedRowStartIndex = 1;
+            for (var i = 0; i < gameBoard.Height; i++)
             {
-                for (int j = seedRowStartIndex; j < seedRowStartIndex + gameBoard.Width; j++)
+                for (var j = seedRowStartIndex; j < seedRowStartIndex + gameBoard.Width; j++)
                 {
 
                     var snakePresentAtlocation = snakes.FirstOrDefault(snake => snake.headStart == j || snake.tailEnd == j);
