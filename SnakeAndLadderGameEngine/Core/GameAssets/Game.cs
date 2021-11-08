@@ -4,7 +4,6 @@ using System.Linq;
 using SnakeLadder.Core.GamePlayer;
 using SnakeLadder.Core.GameStates;
 using SnakeLadder.Core.GameResult;
-using SnakeLadder.Core.GameAssets.DieTypes;
 
 namespace SnakeLadder.Core.GameAssets
 {
@@ -37,7 +36,7 @@ namespace SnakeLadder.Core.GameAssets
                 MovePlayer(dieValue);
 
                 //Moves a player as per movable present at the location
-                this.GameBoard.GetPlayerMovables(Player.Position)?.MovePlayer(this.Player);
+                this.GameBoard.GetPlayerMovables(Player.Position)?.Teleport(this.Player);
 
                 this.CurrentGameState.NumberofTurnsLeft--;
                 this.CurrentGameState.PlayerPosition = this.Player.Position;

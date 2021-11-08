@@ -20,7 +20,7 @@ namespace SnakeLadderGameEngine.Tests
 
             //Act
             game.Player.Move(14);
-            game.GameBoard.GetPlayerMovables(14)?.MovePlayer(game.Player);
+            game.GameBoard.GetPlayerMovables(14)?.Teleport(game.Player);
             var expected = game.Player.Position;
 
             //Assert

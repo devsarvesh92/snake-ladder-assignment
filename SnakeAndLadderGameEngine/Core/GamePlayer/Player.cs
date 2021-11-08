@@ -1,6 +1,4 @@
-using System;
 using SnakeLadder.Core.GameAssets;
-using SnakeLadder.Core.GameAssets.DieTypes;
 
 namespace SnakeLadder.Core.GamePlayer
 {

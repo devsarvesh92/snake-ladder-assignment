@@ -1,6 +1,6 @@
 using System;
 
-namespace SnakeLadder.Core.GameAssets.DieTypes
+namespace SnakeLadder.Core.GameAssets
 {
     public class CrookedDie : Die
     {

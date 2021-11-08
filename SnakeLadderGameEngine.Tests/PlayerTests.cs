@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using SnakeLadder.Core.GameAssets;
-using SnakeLadder.Core.GameAssets.DieTypes;
 using SnakeLadder.Core.GamePlayer;
 using Xunit;
 
