@@ -28,7 +28,7 @@ namespace SnakeAndLadderGameEngine
 
             while (!game.IsGameOver())
             {
-                Console.WriteLine("Press any key to role a dice");
+                Console.WriteLine("Press any key to role a die");
                 Console.ReadLine();
 
                 game.Run();

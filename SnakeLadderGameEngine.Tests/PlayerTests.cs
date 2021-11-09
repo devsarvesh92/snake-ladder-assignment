@@ -15,11 +15,11 @@ namespace SnakeLadderGameEngine.Tests
             //Act
 
             Player player = new Player(name);
-            var valueOnDice = player.Play(die);
+            var valueOnDie = player.Play(die);
 
             //Assert
 
-            Assert.InRange(valueOnDice, 1, 6);
+            Assert.InRange(valueOnDie, 1, 6);
         }
 
         [Theory]
@@ -30,11 +30,11 @@ namespace SnakeLadderGameEngine.Tests
             //Act
 
             Player player = new Player(name);
-            var valueOnDice = player.Play(die);
+            var valueOnDie = player.Play(die);
 
             //Assert
 
-            Assert.Equal(0, valueOnDice % 2);
+            Assert.Equal(0, valueOnDie % 2);
         }
 
 

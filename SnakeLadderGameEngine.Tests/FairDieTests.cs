@@ -10,8 +10,8 @@ namespace SnakeLadderGameEngine.Tests
         public void Roll_ValueShouldbeInBetween1And6()
         {
             //Act
-            var dice = new FairDie();
-            var actual = dice.Roll();
+            var die = new FairDie();
+            var actual = die.Roll();
 
             //Assert
             Assert.InRange(actual, 1, 6);
