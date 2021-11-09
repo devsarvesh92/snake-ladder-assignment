@@ -30,19 +30,15 @@ namespace SnakeLadder.Core.GameAssets
 
         public GameState Run()
         {
-            if (this.CurrentGameState.IsTurnAvailable())
+            Action actionToPlay = () =>
             {
                 var dieValue = this.Player.Play(this.Die);
                 AdvancePlayer(dieValue);
-
-                //Moves a player as per movable present at the location
                 this.GameBoard.GetPlayerMovables(Player.Position)?.Teleport(this.Player);
-
-                this.CurrentGameState.NumberOfTurnsLeft--;
-                this.CurrentGameState.PlayerPosition = this.Player.Position;
                 this.CurrentGameState.DieValue = dieValue;
-            }
+            };
 
+            this.Play(actionToPlay);
             return this.CurrentGameState;
         }
 
@@ -57,6 +53,16 @@ namespace SnakeLadder.Core.GameAssets
             else
             {
                 return Result.InProgress;
+            }
+        }
+
+        private void Play(Action actionToPlay)
+        {
+            if (this.CurrentGameState.IsTurnAvailable())
+            {
+                actionToPlay();
+                this.CurrentGameState.NumberOfTurnsLeft--;
+                this.CurrentGameState.PlayerPosition = this.Player.Position;
             }
         }
 
