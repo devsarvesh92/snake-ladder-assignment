@@ -1,4 +1,5 @@
 using SnakeLadder.Core.GameAssets;
+using SnakeLadder.Core.GameExceptions;
 
 namespace SnakeLadder.Core.GamePlayer
 {
@@ -10,7 +11,7 @@ namespace SnakeLadder.Core.GamePlayer
 
         public Player(string name)
         {
-            this.Name = name;
+            this.Name = string.IsNullOrWhiteSpace(name) ? throw new InvalidPlayerNameException("Player name is empty. Please enter valid name") : name;
             this.Position = 1;
         }
 

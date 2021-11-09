@@ -4,6 +4,7 @@ using System.Linq;
 using SnakeLadder.Core.GamePlayer;
 using SnakeLadder.Core.GameStates;
 using SnakeLadder.Core.GameResult;
+using SnakeLadder.Core.GameSpecification;
 
 namespace SnakeLadder.Core.GameAssets
 {
@@ -19,12 +20,12 @@ namespace SnakeLadder.Core.GameAssets
 
         private readonly Random random;
 
-        public Game(Player player)
+        public Game(Player player, BoardSpecifications boardSpecifications)
         {
             random = new Random();
             this.Player = player;
             this.Die = new List<Die>() { new FairDie(), new CrookedDie() }[random.Next(0, 2)];
-            GameBoard = new GameBoard(10, 10);
+            GameBoard = new GameBoard(boardSpecifications);
             CurrentGameState = new GameState();
         }
 
@@ -48,7 +49,14 @@ namespace SnakeLadder.Core.GameAssets
         {
             if (this.IsGameOver())
             {
-                return this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination) ? Result.Won : Result.Lost;
+                if (this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination))
+                {
+                    return Result.Won;
+                }
+                else
+                {
+                    return Result.Lost;
+                }
             }
             else
             {
@@ -69,8 +77,8 @@ namespace SnakeLadder.Core.GameAssets
         private void AdvancePlayer(int numberOfPositions)
         {
             var position = this.Player.Position + numberOfPositions <= this.GameBoard.Destination ?
-                                   this.Player.Position + numberOfPositions :
-                                   this.Player.Position;
+                           this.Player.Position + numberOfPositions :
+                           this.Player.Position;
             this.Player.Move(position);
         }
     }

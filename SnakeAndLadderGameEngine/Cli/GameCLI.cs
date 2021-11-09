@@ -1,52 +1,76 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using SnakeLadder.Core.GameAssets;
+using SnakeLadder.Core.GameExceptions;
 using SnakeLadder.Core.GamePlayer;
+using SnakeLadder.Core.GameSpecification;
 
 namespace SnakeAndLadderGameEngine
 {
     public class GameClI
     {
+        public BoardSpecifications BoardSpecifications { get; }
+
+        public GameClI(BoardSpecifications boardSpecifications)
+        {
+            this.BoardSpecifications = boardSpecifications;
+        }
+
         public void Run()
         {
-            Console.WriteLine("Welcome to SnakeAndLadder board game");
-            Console.WriteLine();
-
-            Console.WriteLine("Enter player name");
-
-            //Build Player
-            var playerName = Console.ReadLine();
-            var player = new Player(playerName);
-
-            Console.WriteLine($"Welome to SnakeAndLadder {player.Name}");
-            Console.WriteLine();
-
-            var game = new Game(player);
-
-            RenderGameBoard(game.GameBoard);
-
-            while (!game.IsGameOver())
+            try
             {
-                Console.WriteLine("Press any key to role a die");
+                Console.WriteLine("Welcome to SnakeAndLadder board game");
+                Console.WriteLine();
+
+                Console.WriteLine("Enter player name");
+
+                //Build Player
+                var playerName = Console.ReadLine();
+                var player = new Player(playerName);
+
+                Console.WriteLine($"Welome to SnakeAndLadder {player.Name}");
+                Console.WriteLine();
+
+                var game = new Game(player, this.BoardSpecifications);
+
+                RenderGameBoard(game.GameBoard);
+
+                while (!game.IsGameOver())
+                {
+                    Console.WriteLine("Press any key to role a die");
+                    Console.ReadLine();
+
+                    game.Run();
+                    System.Console.WriteLine($"Die value {game.CurrentGameState.DieValue}");
+                    System.Console.WriteLine($"{game.Player.Name} is now at {game.CurrentGameState.PlayerPosition} and number of turns left {game.CurrentGameState.NumberOfTurnsLeft}");
+                    Console.ReadLine();
+                }
+
+                Console.ForegroundColor = game.GetResult().Equals(SnakeLadder.Core.GameResult.Result.Won) ? ConsoleColor.Green : ConsoleColor.Yellow;
+                Console.WriteLine($"{game.Player.Name} has {game.GetResult().ToString()} the game");
                 Console.ReadLine();
 
-                game.Run();
-                System.Console.WriteLine($"Die value {game.CurrentGameState.DieValue}");
-                System.Console.WriteLine($"{game.Player.Name} is now at {game.CurrentGameState.PlayerPosition} and number of turns left {game.CurrentGameState.NumberOfTurnsLeft}");
+                System.Console.WriteLine("Game over");
+                Console.ReadLine();
+
+                Console.WriteLine();
                 Console.ReadLine();
             }
-
-            Console.ForegroundColor = game.GetResult().Equals(SnakeLadder.Core.GameResult.Result.Won) ? ConsoleColor.Green : ConsoleColor.Yellow;
-            Console.WriteLine($"{game.Player.Name} has {game.GetResult().ToString()} the game");
-            Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-
-            System.Console.WriteLine("Game over");
-            Console.ReadLine();
-
-            Console.WriteLine();
-            Console.ReadLine();
+            catch (InvalidPlayerNameException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to exit");
+                Console.ReadLine();
+            }
+            catch (DuplicatePortalException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to exit");
+                Console.ReadLine();
+            }
+            ResetConsoleColor();
         }
 
         private void RenderGameBoard(GameBoard gameBoard)
@@ -57,9 +81,9 @@ namespace SnakeAndLadderGameEngine
             var portals = gameBoard.Portals;
             //Render Game Board
             var seedRowStartIndex = 1;
-            for (var i = 0; i < gameBoard.Height; i++)
+            for (var i = 0; i < gameBoard.BoardSpecifications.Height; i++)
             {
-                for (var j = seedRowStartIndex; j < seedRowStartIndex + gameBoard.Width; j++)
+                for (var j = seedRowStartIndex; j < seedRowStartIndex + gameBoard.BoardSpecifications.Width; j++)
                 {
                     var portal = gameBoard.IsPortalPresentAt(j);
                     if (portal != null)
@@ -82,7 +106,7 @@ namespace SnakeAndLadderGameEngine
                     ResetConsoleColor();
                 }
                 System.Console.WriteLine();
-                seedRowStartIndex += gameBoard.Width;
+                seedRowStartIndex += gameBoard.BoardSpecifications.Width;
             }
 
             Console.WriteLine("");

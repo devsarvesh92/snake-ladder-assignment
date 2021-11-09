@@ -1,5 +1,6 @@
 ﻿using System;
 using SnakeAndLadderGameEngine;
+using SnakeLadder.Core.GameSpecification;
 
 namespace SnakeLadderAssignment
 {
@@ -7,7 +8,8 @@ namespace SnakeLadderAssignment
     {
         static void Main(string[] args)
         {
-            var gameCli = new GameClI();
+            var boardSpecifications = new BoardSpecifications();
+            var gameCli = new GameClI(boardSpecifications);
             gameCli.Run();
         }
     }

@@ -1,37 +1,34 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SnakeLadder.Core.GameAssets.Interfaces;
+using SnakeLadder.Core.GameExceptions;
+using SnakeLadder.Core.GameSpecification;
 
 namespace SnakeLadder.Core.GameAssets
 {
-    public record GameBoard(int Width, int Height)
+    public record GameBoard(BoardSpecifications BoardSpecifications)
     {
-        public int Destination = Width * Height;
+        public int Destination = BoardSpecifications.Width * BoardSpecifications.Height;
 
-        public readonly HashSet<IPortal> Portals = GetPortals();
+        public readonly HashSet<IPortal> Portals = ValidatePortals(BoardSpecifications.PortalSpecifications.Portals) ? BoardSpecifications.PortalSpecifications.Portals : null;
 
-        /// <summary>
-        /// Playermovables present at player location
-        /// Playermovables = Either snake or ladder because they moves player from Source to destination
-        /// </summary>
-        /// <param name="location"></param>
-        /// <returns>Playermovables</returns>
-        public IPortal IsPortalPresentAt(int location)
+        private static bool ValidatePortals(HashSet<IPortal> portals)
         {
-            return this.Portals.FirstOrDefault(portal => portal.IsPresentAt(location));
-        }
-
-        private static HashSet<IPortal> GetPortals()
-        {
-            return new HashSet<IPortal>()
+            var duplicatePortals = portals.Select(portal =>
+                                                    {
+                                                        return portal.GetLocation();
+                                                    }).
+                                                    GroupBy(location => new { location.start, location.end }).
+                                                    Where(portal => portal.Skip(1).Any());
+            if (duplicatePortals != null && duplicatePortals.Any())
             {
-                new Ladder(2,23),
-                new Ladder(8,24),
-                new Ladder(9,81),
-                new Ladder(29,65),
-                new Ladder(69,96),
-                new Snake(14,7)
-            };
+                var duplicatePortalLocations = duplicatePortals.Select(loc => loc.Key.ToString());
+                throw new DuplicatePortalException($"Duplicate portal exists at {string.Join(":", duplicatePortalLocations)}. Please contact support team");
+            }
+            return true;
         }
+
+        public IPortal IsPortalPresentAt(int location) => this.Portals.FirstOrDefault(portal => portal.IsPresentAt(location));
     }
 }

@@ -102,7 +102,7 @@ namespace SnakeLadderGameEngine.Tests
         public static IEnumerable<object[]> TestDataGameTests =>
         new List<object[]>
         {
-            new object[] { new Game(new Player("Sarvesh")) },
+            new object[] { new Game(new Player("Sarvesh"), new SnakeLadder.Core.GameSpecification.BoardSpecifications()) },
         };
         #endregion
     }
