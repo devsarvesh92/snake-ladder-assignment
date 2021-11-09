@@ -65,7 +65,7 @@ namespace SnakeLadderGameEngine.Tests
             var actual = game.GetResult();
 
             //Assert
-            Assert.Equal(SnakeLadder.Core.GameResult.Result.Win, actual);
+            Assert.Equal(SnakeLadder.Core.GameResult.Result.Won, actual);
         }
 
 
@@ -81,7 +81,7 @@ namespace SnakeLadderGameEngine.Tests
             var actual = game.GetResult();
 
             //Assert
-            Assert.Equal(SnakeLadder.Core.GameResult.Result.Lose, actual);
+            Assert.Equal(SnakeLadder.Core.GameResult.Result.Lost, actual);
         }
 
         [Theory]

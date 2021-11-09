@@ -2,8 +2,8 @@ namespace SnakeLadder.Core.GameResult
 {
     public enum Result
     {
-        Win,
-        Lose,
+        Won,
+        Lost,
         InProgress
     }
 }

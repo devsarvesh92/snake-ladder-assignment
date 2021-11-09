@@ -37,7 +37,7 @@ namespace SnakeAndLadderGameEngine
                 Console.ReadLine();
             }
 
-            Console.ForegroundColor = game.GetResult().Equals(SnakeLadder.Core.GameResult.Result.Win) ? ConsoleColor.Green : ConsoleColor.Yellow;
+            Console.ForegroundColor = game.GetResult().Equals(SnakeLadder.Core.GameResult.Result.Won) ? ConsoleColor.Green : ConsoleColor.Yellow;
             Console.WriteLine($"{game.Player.Name} has {game.GetResult().ToString()} the game");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;

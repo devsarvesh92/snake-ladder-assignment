@@ -48,7 +48,7 @@ namespace SnakeLadder.Core.GameAssets
         {
             if (this.IsGameOver())
             {
-                return this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination) ? Result.Win : Result.Lose;
+                return this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination) ? Result.Won : Result.Lost;
             }
             else
             {
