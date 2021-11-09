@@ -30,7 +30,7 @@ namespace SnakeLadder.Core.GameAssets
 
         public GameState Run()
         {
-            if (this.CurrentGameState.NumberOfTurnsLeft > 0)
+            if (this.CurrentGameState.IsTurnAvailable())
             {
                 var dieValue = this.Player.Play(this.Die);
                 AdvancePlayer(dieValue);

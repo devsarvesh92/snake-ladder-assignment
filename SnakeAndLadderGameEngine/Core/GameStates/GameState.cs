@@ -12,5 +12,7 @@ namespace SnakeLadder.Core.GameStates
         public int PlayerPosition { get; set; }
 
         public int DieValue { get; set; }
+
+        public bool IsTurnAvailable() => this.NumberOfTurnsLeft > 0;
     }
 }
