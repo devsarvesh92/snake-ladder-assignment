@@ -4,7 +4,7 @@ using SnakeLadder.Core.GamePlayer;
 
 namespace SnakeLadder.Core.GameAssets
 {
-    public record Ladder(int bottomPosition, int topPosition, ConsoleColor ladderColor) : IPortal
+    public record Ladder(int bottomPosition, int topPosition) : IPortal
     {
         /// <summary>
         /// Teleport simulates climb movement to the top of ladder

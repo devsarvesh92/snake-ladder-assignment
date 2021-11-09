@@ -4,7 +4,7 @@ using SnakeLadder.Core.GamePlayer;
 
 namespace SnakeLadder.Core.GameAssets
 {
-    public record Snake(int headStart, int tailEnd, ConsoleColor snakeColor) : IPortal
+    public record Snake(int headStart, int tailEnd) : IPortal
     {
 
         /// <summary>
