@@ -46,13 +46,13 @@ namespace SnakeLadder.Core.GameAssets
             return this.CurrentGameState;
         }
 
-        public bool IsGameOver() => this.CurrentGameState.PlayerPosition == this.GameBoard.Destination || this.CurrentGameState.NumberOfTurnsLeft == 0;
+        public bool IsGameOver() => this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination) || this.CurrentGameState.NumberOfTurnsLeft.Equals(0);
 
         public Result GetResult()
         {
             if (this.IsGameOver())
             {
-                return this.CurrentGameState.PlayerPosition == this.GameBoard.Destination ? Result.Win : Result.Lose;
+                return this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination) ? Result.Win : Result.Lose;
             }
             else
             {

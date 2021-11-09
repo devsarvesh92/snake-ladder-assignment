@@ -22,11 +22,11 @@ namespace SnakeLadder.Core.GameAssets
         {
             IPortal playerMovable;
 
-            playerMovable = this.Snakes.FirstOrDefault(snake => snake.headStart == location);
+            playerMovable = this.Snakes.FirstOrDefault(snake => snake.headStart.Equals(location));
 
             if (playerMovable == null)
             {
-                playerMovable = this.Ladders.FirstOrDefault(ladder => ladder.bottomPosition == location);
+                playerMovable = this.Ladders.FirstOrDefault(ladder => ladder.bottomPosition.Equals(location));
             }
 
             return playerMovable;
