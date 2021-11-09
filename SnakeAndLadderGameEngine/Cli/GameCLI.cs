@@ -33,7 +33,7 @@ namespace SnakeAndLadderGameEngine
 
                 game.Run();
                 System.Console.WriteLine($"Die value {game.CurrentGameState.DieValue}");
-                System.Console.WriteLine($"{game.Player.Name} is now at {game.CurrentGameState.PlayerPosition} and number of turns left {game.CurrentGameState.NumberofTurnsLeft}");
+                System.Console.WriteLine($"{game.Player.Name} is now at {game.CurrentGameState.PlayerPosition} and number of turns left {game.CurrentGameState.NumberOfTurnsLeft}");
                 Console.ReadLine();
             }
 

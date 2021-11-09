@@ -4,7 +4,7 @@ using Xunit;
 
 namespace SnakeLadderGameEngine.Tests
 {
-    public class NormalDieTests
+    public class FairDieTests
     {
         [Fact]
         public void Roll_ValueShouldbeInBetween1And6()

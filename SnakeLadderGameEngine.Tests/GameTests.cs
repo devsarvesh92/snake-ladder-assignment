@@ -21,7 +21,7 @@ namespace SnakeLadderGameEngine.Tests
             //Assert
             Assert.NotEqual(initialPosition, game.Player.Position);
             Assert.Equal(game.Player.Position, game.CurrentGameState.PlayerPosition);
-            Assert.Equal(9, game.CurrentGameState.NumberofTurnsLeft);
+            Assert.Equal(9, game.CurrentGameState.NumberOfTurnsLeft);
         }
 
         [Theory]
@@ -44,7 +44,7 @@ namespace SnakeLadderGameEngine.Tests
         public void IsGameOver_ShouldReturnTrueWhenNoTurnsLeftToPlay(Game game)
         {
             //Arrange
-            game.CurrentGameState.NumberofTurnsLeft = 0;
+            game.CurrentGameState.NumberOfTurnsLeft = 0;
 
             //Act
             var actual = game.IsGameOver();
@@ -75,7 +75,7 @@ namespace SnakeLadderGameEngine.Tests
         public void IsGameOver_ShouldReturnLostWhenNoTurnsLeftToPlayAndPlayerHasNotReachedDestination(Game game)
         {
             //Arrange
-            game.CurrentGameState.NumberofTurnsLeft = 0;
+            game.CurrentGameState.NumberOfTurnsLeft = 0;
 
             //Act
             var actual = game.GetResult();
@@ -89,7 +89,7 @@ namespace SnakeLadderGameEngine.Tests
         public void IsGameOver_ShouldReturnInProgressWhenTurnsLeftToPlayAndPlayerHasNotReachedDestination(Game game)
         {
             //Arrange
-            game.CurrentGameState.NumberofTurnsLeft = 5;
+            game.CurrentGameState.NumberOfTurnsLeft = 5;
 
             //Act
             var actual = game.GetResult();

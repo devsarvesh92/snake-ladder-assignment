@@ -4,10 +4,10 @@ namespace SnakeLadder.Core.GameStates
     {
         public GameState()
         {
-            NumberofTurnsLeft = 10;
+            NumberOfTurnsLeft = 10;
         }
 
-        public int NumberofTurnsLeft { get; set; }
+        public int NumberOfTurnsLeft { get; set; }
 
         public int PlayerPosition { get; set; }
 

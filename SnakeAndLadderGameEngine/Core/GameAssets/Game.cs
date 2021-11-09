@@ -30,15 +30,15 @@ namespace SnakeLadder.Core.GameAssets
 
         public GameState Run()
         {
-            if (this.CurrentGameState.NumberofTurnsLeft > 0)
+            if (this.CurrentGameState.NumberOfTurnsLeft > 0)
             {
                 var dieValue = this.Player.Play(this.Die);
-                MovePlayer(dieValue);
+                AdvancePlayer(dieValue);
 
                 //Moves a player as per movable present at the location
                 this.GameBoard.GetPlayerMovables(Player.Position)?.Teleport(this.Player);
 
-                this.CurrentGameState.NumberofTurnsLeft--;
+                this.CurrentGameState.NumberOfTurnsLeft--;
                 this.CurrentGameState.PlayerPosition = this.Player.Position;
                 this.CurrentGameState.DieValue = dieValue;
             }
@@ -46,7 +46,7 @@ namespace SnakeLadder.Core.GameAssets
             return this.CurrentGameState;
         }
 
-        public bool IsGameOver() => this.CurrentGameState.PlayerPosition == this.GameBoard.Destination || this.CurrentGameState.NumberofTurnsLeft == 0;
+        public bool IsGameOver() => this.CurrentGameState.PlayerPosition == this.GameBoard.Destination || this.CurrentGameState.NumberOfTurnsLeft == 0;
 
         public Result GetResult()
         {
@@ -60,10 +60,10 @@ namespace SnakeLadder.Core.GameAssets
             }
         }
 
-        private void MovePlayer(int dieValue)
+        private void AdvancePlayer(int numberOfPositions)
         {
-            var position = this.Player.Position + dieValue <= this.GameBoard.Destination ?
-                                   this.Player.Position + dieValue :
+            var position = this.Player.Position + numberOfPositions <= this.GameBoard.Destination ?
+                                   this.Player.Position + numberOfPositions :
                                    this.Player.Position;
             this.Player.Move(position);
         }
