@@ -54,34 +54,32 @@ namespace SnakeAndLadderGameEngine
             Console.WriteLine("Loading gameBoard");
             Console.WriteLine("");
 
-            var snakes = gameBoard.Snakes;
-            var ladders = gameBoard.Ladders;
+            var portals = gameBoard.Portals;
             //Render Game Board
             var seedRowStartIndex = 1;
             for (var i = 0; i < gameBoard.Height; i++)
             {
                 for (var j = seedRowStartIndex; j < seedRowStartIndex + gameBoard.Width; j++)
                 {
-
-                    var snakePresentAtlocation = snakes.FirstOrDefault(snake => snake.headStart == j || snake.tailEnd == j);
-                    var ladderPresentAtlocation = ladders.FirstOrDefault(ladder => ladder.topPosition == j || ladder.bottomPosition == j);
-
-                    if (snakePresentAtlocation != null)
+                    var portal = gameBoard.IsPortalPresentAt(j);
+                    if (portal != null)
                     {
-                        Console.ForegroundColor = snakePresentAtlocation.snakeColor;
-                        System.Console.Write($"|{j} S {(snakePresentAtlocation.headStart, snakePresentAtlocation.tailEnd)}|");
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else if (ladderPresentAtlocation != null)
-                    {
-                        Console.ForegroundColor = ladderPresentAtlocation.ladderColor;
-                        System.Console.Write($"|{j} L {(ladderPresentAtlocation.topPosition, ladderPresentAtlocation.bottomPosition)}|");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        if (portal is Snake)
+                        {
+                            var snake = portal as Snake;
+                            RenderSnake(snake, j);
+                        }
+                        else if (portal is Ladder)
+                        {
+                            var ladder = portal as Ladder;
+                            RenderLadder(ladder, j);
+                        }
                     }
                     else
                     {
                         System.Console.Write($"|{j}|");
                     }
+                    ResetConsoleColor();
                 }
                 System.Console.WriteLine();
                 seedRowStartIndex += gameBoard.Width;
@@ -90,6 +88,23 @@ namespace SnakeAndLadderGameEngine
             Console.WriteLine("");
             Console.WriteLine("Loading complete");
             Console.WriteLine("");
+        }
+
+        private void RenderSnake(Snake snake, int location)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.Write($"|{location} S {(snake.headStart, snake.tailEnd)}|");
+        }
+
+        private void RenderLadder(Ladder ladder, int location)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.Write($"|{location} L {(ladder.bottomPosition, ladder.topPosition)}|");
+        }
+
+        private void ResetConsoleColor()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

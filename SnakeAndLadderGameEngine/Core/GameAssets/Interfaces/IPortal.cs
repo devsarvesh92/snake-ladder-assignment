@@ -8,5 +8,7 @@ namespace SnakeLadder.Core.GameAssets.Interfaces
         /// </summary>
         /// <param name="player"></param>
         public void Teleport(Player player);
+
+        public bool IsPresentAt(int location);
     }
 }

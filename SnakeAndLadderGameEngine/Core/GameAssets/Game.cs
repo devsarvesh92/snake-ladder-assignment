@@ -34,7 +34,7 @@ namespace SnakeLadder.Core.GameAssets
             {
                 var dieValue = this.Player.Play(this.Die);
                 AdvancePlayer(dieValue);
-                this.GameBoard.GetPlayerMovables(Player.Position)?.Teleport(this.Player);
+                this.GameBoard.IsPortalPresentAt(Player.Position)?.Teleport(this.Player);
                 this.CurrentGameState.DieValue = dieValue;
             };
 

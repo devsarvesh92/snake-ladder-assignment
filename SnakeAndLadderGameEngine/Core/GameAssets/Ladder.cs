@@ -12,5 +12,7 @@ namespace SnakeLadder.Core.GameAssets
         /// <param name="player"></param>
         /// <returns></returns>
         public void Teleport(Player player) => player.Move(this.topPosition);
+
+        public bool IsPresentAt(int location) => this.bottomPosition == location;
     }
 }

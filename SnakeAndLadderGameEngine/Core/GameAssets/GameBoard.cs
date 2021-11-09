@@ -8,9 +8,7 @@ namespace SnakeLadder.Core.GameAssets
     {
         public int Destination = Width * Height;
 
-        public readonly List<Snake> Snakes = GetSnakes();
-
-        public readonly List<Ladder> Ladders = GetLadders();
+        public readonly HashSet<IPortal> Portals = GetPortals();
 
         /// <summary>
         /// Playermovables present at player location
@@ -18,37 +16,21 @@ namespace SnakeLadder.Core.GameAssets
         /// </summary>
         /// <param name="location"></param>
         /// <returns>Playermovables</returns>
-        public IPortal GetPlayerMovables(int location)
+        public IPortal IsPortalPresentAt(int location)
         {
-            IPortal playerMovable;
-
-            playerMovable = this.Snakes.FirstOrDefault(snake => snake.headStart.Equals(location));
-
-            if (playerMovable == null)
-            {
-                playerMovable = this.Ladders.FirstOrDefault(ladder => ladder.bottomPosition.Equals(location));
-            }
-
-            return playerMovable;
+            return this.Portals.FirstOrDefault(portal => portal.IsPresentAt(location));
         }
 
-        private static List<Snake> GetSnakes()
+        private static HashSet<IPortal> GetPortals()
         {
-            return new List<Snake>()
-            {
-                new Snake(14,7,System.ConsoleColor.Blue)
-            };
-        }
-
-        private static List<Ladder> GetLadders()
-        {
-            return new List<Ladder>()
+            return new HashSet<IPortal>()
             {
                 new Ladder(2,23,System.ConsoleColor.DarkYellow),
                 new Ladder(8,24,System.ConsoleColor.Red),
                 new Ladder(9,81,System.ConsoleColor.Green),
                 new Ladder(29,65,System.ConsoleColor.Yellow),
-                new Ladder(69,96,System.ConsoleColor.DarkMagenta)
+                new Ladder(69,96,System.ConsoleColor.DarkMagenta),
+                new Snake(14,7,System.ConsoleColor.Blue)
             };
         }
     }
