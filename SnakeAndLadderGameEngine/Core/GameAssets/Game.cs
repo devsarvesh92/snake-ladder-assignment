@@ -12,19 +12,19 @@ namespace SnakeLadder.Core.GameAssets
     {
         public GameState CurrentGameState { get; private set; }
 
-        public Die Die { get; }
+        private Die Die { get; }
 
         public GameBoard GameBoard { get; }
 
         public Player Player { get; private set; }
 
-        private readonly Random random;
+        private readonly Random _random;
 
         public Game(Player player, BoardSpecifications boardSpecifications)
         {
-            random = new Random();
+            _random = new Random();
             this.Player = player;
-            this.Die = new List<Die>() { new FairDie(), new CrookedDie() }[random.Next(0, 2)];
+            this.Die = new List<Die>() { new FairDie(), new CrookedDie() }[_random.Next(0, 2)];
             GameBoard = new GameBoard(boardSpecifications);
             CurrentGameState = new GameState();
         }
@@ -49,14 +49,7 @@ namespace SnakeLadder.Core.GameAssets
         {
             if (this.IsGameOver())
             {
-                if (this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination))
-                {
-                    return Result.Won;
-                }
-                else
-                {
-                    return Result.Lost;
-                }
+                return this.CurrentGameState.PlayerPosition.Equals(this.GameBoard.Destination) ? Result.Won : Result.Lost;
             }
             else
             {

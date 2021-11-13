@@ -9,16 +9,13 @@ namespace SnakeLadder.Core.GameAssets
 {
     public record GameBoard(BoardSpecifications BoardSpecifications)
     {
-        public int Destination = BoardSpecifications.Width * BoardSpecifications.Height;
+        public readonly int Destination = BoardSpecifications.Width * BoardSpecifications.Height;
 
         public readonly HashSet<IPortal> Portals = ValidatePortals(BoardSpecifications.PortalSpecifications.Portals) ? BoardSpecifications.PortalSpecifications.Portals : null;
 
         private static bool ValidatePortals(HashSet<IPortal> portals)
         {
-            var duplicatePortals = portals.Select(portal =>
-                                                    {
-                                                        return portal.GetLocation();
-                                                    }).
+            var duplicatePortals = portals.Select(portal => portal.GetLocation()).
                                                     GroupBy(location => new { location.start, location.end }).
                                                     Where(portal => portal.Skip(1).Any());
             if (duplicatePortals != null && duplicatePortals.Any())

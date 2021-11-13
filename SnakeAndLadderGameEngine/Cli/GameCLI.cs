@@ -8,7 +8,7 @@ namespace SnakeAndLadderGameEngine
 {
     public class GameClI
     {
-        public BoardSpecifications BoardSpecifications { get; }
+        private BoardSpecifications BoardSpecifications { get; }
 
         public GameClI(BoardSpecifications boardSpecifications)
         {
@@ -28,7 +28,7 @@ namespace SnakeAndLadderGameEngine
                 var playerName = Console.ReadLine();
                 var player = new Player(playerName);
 
-                Console.WriteLine($"Welome to SnakeAndLadder {player.Name}");
+                Console.WriteLine($"Welcome to SnakeAndLadder {player.Name}");
                 Console.WriteLine();
 
                 var game = new Game(player, this.BoardSpecifications);
@@ -42,11 +42,14 @@ namespace SnakeAndLadderGameEngine
 
                     game.Run();
                     System.Console.WriteLine($"Die value {game.CurrentGameState.DieValue}");
-                    System.Console.WriteLine($"{game.Player.Name} is now at {game.CurrentGameState.PlayerPosition} and number of turns left {game.CurrentGameState.NumberOfTurnsLeft}");
+                    System.Console.WriteLine(
+                        $"{game.Player.Name} is now at {game.CurrentGameState.PlayerPosition} and number of turns left {game.CurrentGameState.NumberOfTurnsLeft}");
                     Console.ReadLine();
                 }
 
-                Console.ForegroundColor = game.GetResult().Equals(SnakeLadder.Core.GameResult.Result.Won) ? ConsoleColor.Green : ConsoleColor.Yellow;
+                Console.ForegroundColor = game.GetResult().Equals(SnakeLadder.Core.GameResult.Result.Won)
+                    ? ConsoleColor.Green
+                    : ConsoleColor.Yellow;
                 Console.WriteLine($"{game.Player.Name} has {game.GetResult().ToString()} the game");
                 Console.ReadLine();
 
@@ -70,6 +73,7 @@ namespace SnakeAndLadderGameEngine
                 Console.WriteLine("Press any key to exit");
                 Console.ReadLine();
             }
+
             ResetConsoleColor();
         }
 
@@ -103,8 +107,10 @@ namespace SnakeAndLadderGameEngine
                     {
                         System.Console.Write($"|{j}|");
                     }
+
                     ResetConsoleColor();
                 }
+
                 System.Console.WriteLine();
                 seedRowStartIndex += gameBoard.BoardSpecifications.Width;
             }
@@ -117,13 +123,13 @@ namespace SnakeAndLadderGameEngine
         private void RenderSnake(Snake snake, int location)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            System.Console.Write($"|{location} S {(snake.headStart, snake.tailEnd)}|");
+            System.Console.Write($"|{location} S {(snake.HeadStart, snake.TailEnd)}|");
         }
 
         private void RenderLadder(Ladder ladder, int location)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            System.Console.Write($"|{location} L {(ladder.bottomPosition, ladder.topPosition)}|");
+            System.Console.Write($"|{location} L {(ladder.BottomPosition, ladder.TopPosition)}|");
         }
 
         private void ResetConsoleColor()
