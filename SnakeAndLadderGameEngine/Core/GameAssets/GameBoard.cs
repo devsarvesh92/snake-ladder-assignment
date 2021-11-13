@@ -13,7 +13,7 @@ namespace SnakeLadder.Core.GameAssets
 
         public readonly HashSet<IPortal> Portals = ValidatePortals(BoardSpecifications.PortalSpecifications.Portals) ? BoardSpecifications.PortalSpecifications.Portals : null;
 
-        private static bool ValidatePortals(HashSet<IPortal> portals)
+        private static bool ValidatePortals(IEnumerable<IPortal> portals)
         {
             var duplicatePortals = portals.Select(portal => portal.GetLocation()).
                                                     GroupBy(location => new { location.start, location.end }).

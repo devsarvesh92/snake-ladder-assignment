@@ -18,13 +18,11 @@ namespace SnakeLadder.Core.GameAssets
 
         public Player Player { get; private set; }
 
-        private readonly Random _random;
-
         public Game(Player player, BoardSpecifications boardSpecifications)
         {
-            _random = new Random();
+            var random = new Random();
             this.Player = player;
-            this.Die = new List<Die>() { new FairDie(), new CrookedDie() }[_random.Next(0, 2)];
+            this.Die = new List<Die>() { new FairDie(), new CrookedDie() }[random.Next(0, 2)];
             GameBoard = new GameBoard(boardSpecifications);
             CurrentGameState = new GameState();
         }

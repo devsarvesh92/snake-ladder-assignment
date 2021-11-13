@@ -92,14 +92,12 @@ namespace SnakeAndLadderGameEngine
                     var portal = gameBoard.IsPortalPresentAt(j);
                     if (portal != null)
                     {
-                        if (portal is Snake)
+                        if (portal is Snake snake)
                         {
-                            var snake = portal as Snake;
                             RenderSnake(snake, j);
                         }
-                        else if (portal is Ladder)
+                        else if (portal is Ladder ladder)
                         {
-                            var ladder = portal as Ladder;
                             RenderLadder(ladder, j);
                         }
                     }
